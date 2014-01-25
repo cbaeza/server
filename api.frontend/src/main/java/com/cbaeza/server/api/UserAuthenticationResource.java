@@ -1,6 +1,7 @@
 package com.cbaeza.server.api;
 
 import com.cbaeza.mgmt.user.Authentication;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
  * Since: 24.01.14
  */
 @Path("user")
+@Component
 public class UserAuthenticationResource {
 
     @GET
