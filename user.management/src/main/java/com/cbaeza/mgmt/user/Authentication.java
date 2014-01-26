@@ -1,9 +1,12 @@
 package com.cbaeza.mgmt.user;
 
+import org.springframework.stereotype.Service;
+
 /**
  * User: cbaeza
  * Since: 24.01.14
  */
+@Service
 public class Authentication implements IAuthentication {
 
     private static Authentication instance;
@@ -14,6 +17,10 @@ public class Authentication implements IAuthentication {
         }
 
         return instance;
+    }
+
+    public Authentication() {
+        System.out.print("me instanciaron");
     }
 
     @Override

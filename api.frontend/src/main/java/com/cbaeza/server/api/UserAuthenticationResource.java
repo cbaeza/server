@@ -1,6 +1,7 @@
 package com.cbaeza.server.api;
 
 import com.cbaeza.mgmt.user.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -17,10 +18,16 @@ import javax.ws.rs.core.MediaType;
 @Component
 public class UserAuthenticationResource {
 
+    @Autowired
+    private Authentication authentication;
+
     @GET
     @Path("authenticate/{email}/{password}")
     @Produces(MediaType.TEXT_PLAIN)
     public String authenticateUserByEmailAndPassword(@PathParam("email") final String email, @PathParam("password") final String password) {
+        if (authentication == null) {
+            throw new RuntimeException("authentication == null");
+        }
         final boolean b = Authentication.getInstance().identifyUserByEmailAndPassword(email, password);
         return "authenticate: " + b;
     }
