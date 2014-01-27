@@ -9,22 +9,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class Authentication implements IAuthentication {
 
-    private static Authentication instance;
+	private static Authentication instance;
 
-    public static Authentication getInstance() {
-        if (instance == null) {
-            return new Authentication();
-        }
+	public static Authentication getInstance() {
+		if (instance == null) {
+			return new Authentication();
+		}
 
-        return instance;
-    }
+		return instance;
+	}
 
-    public Authentication() {
-        System.out.print("me instanciaron");
-    }
+	public Authentication() {
+		System.out.print("me instanciaron");
+	}
 
-    @Override
-    public boolean identifyUserByEmailAndPassword(String email, String password) {
-        return (email.equals("test@test.de") && password.equals("test"));
-    }
+	@Override
+	public boolean identifyUserByEmailAndPassword(String email, String password) {
+		return (email.equals("test@test.de") && password.equals("test"));
+	}
 }
