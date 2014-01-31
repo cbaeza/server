@@ -1,8 +1,6 @@
 package com.cbaeza.frontend.controllers;
 
 import com.cbaeza.frontend.model.Hello;
-import com.cbaeza.mgmt.user.Authentication;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
