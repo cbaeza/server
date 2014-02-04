@@ -27,7 +27,7 @@ public class UserAuthenticationResource {
     }
 
     /**
-     * Example: http://localhost:8080/api-rest/rest/users/authenticate/test@test/test
+     * Example: http://localhost:8080/server-api/rest/users/authenticate/test@test/test
      * @param email
      * @param password
      * @return
