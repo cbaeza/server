@@ -1,6 +1,7 @@
 package com.cbaeza.server.api;
 
-import org.springframework.http.MediaType;
+import com.cbaeza.model.commons.authentication.WSAuthentication;
+import com.cbaeza.persistence.management.users.AuthenticationMgmtImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,29 +18,38 @@ import java.util.UUID;
 @RequestMapping("/users")
 public class UserAuthenticationResource {
 
+    // FIXME : try to inject Mgmts
     //@Autowired
     //private Authentication authentication;
 
+    /**
+     * Example: http://localhost:8080/server-api/rest/users
+     *
+     * @return a dummy
+     */
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/xml,application/json")
     @ResponseBody
     public WSAuthentication hello() {
-        return new WSAuthentication("hello", UUID.randomUUID().toString());
+        return new WSAuthentication(1L, "dummy", UUID.randomUUID().toString());
     }
 
     /**
      * Example: http://localhost:8080/server-api/rest/users/authenticate/test@test/test
-     * @param email
+     *
+     * @param username
      * @param password
      * @return
      */
-    @RequestMapping(value = "/authenticate/{email}/{password}", method = RequestMethod.POST, headers = "Accept=application/xml,application/json")
+    @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/xml,application/json")
     @ResponseBody
-    public WSAuthentication authenticateUserByEmailAndPassword(@PathVariable("email") final String email, @PathVariable("password") final String password) {
-        //final boolean b = Authentication.getInstance().identifyUserByEmailAndPassword(authentication.getUsername(), authentication.getToken());
-        return new WSAuthentication(email, UUID.randomUUID().toString());
+    public WSAuthentication authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
+        return AuthenticationMgmtImpl.getInstance().authenticateUser(username, password);
     }
 
-    /*@RequestMapping(value = "/authenticate", method = RequestMethod.POST, headers = "Accept=application/xml,application/json", consumes = MediaType.APPLICATION_JSON_VALUE)
+    /*
+    FIXME : does not work with PUT_
+
+    @RequestMapping(value = "/authenticate", method = RequestMethod.PUT, headers = "Accept=application/xml,application/json", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public WSAuthentication authenticateUserByEmailAndPassword(@RequestBody WSAuthentication authentication) {
         //final boolean b = Authentication.getInstance().identifyUserByEmailAndPassword(authentication.getUsername(), authentication.getToken());
