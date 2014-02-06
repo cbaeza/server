@@ -20,14 +20,14 @@ public class UserAuthenticationResource {
 
     // FIXME : try to inject Mgmts
     //@Autowired
-    //private Authentication authentication;
+    //private AuthenticationMgmtImpl authentication;
 
     /**
      * Example: http://localhost:8080/server-api/rest/users
      *
      * @return a dummy
      */
-    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/xml,application/json")
+    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     public WSAuthentication hello() {
         return new WSAuthentication(1L, "dummy", UUID.randomUUID().toString());
@@ -40,7 +40,7 @@ public class UserAuthenticationResource {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/xml,application/json")
+    @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
     @ResponseBody
     public WSAuthentication authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
         return AuthenticationMgmtImpl.getInstance().authenticateUser(username, password);
