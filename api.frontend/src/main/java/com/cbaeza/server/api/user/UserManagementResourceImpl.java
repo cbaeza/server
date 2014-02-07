@@ -51,4 +51,11 @@ public class UserManagementResourceImpl implements UserManagementResource {
     public WS getUserInformation(@PathVariable("userID") Long userID) {
         return userMgmt.getUserInformation(userID);
     }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
+    @ResponseBody
+    @Override
+    public WS getAllUsers() {
+        return userMgmt.getAllUsers();
+    }
 }

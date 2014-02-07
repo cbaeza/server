@@ -2,9 +2,15 @@ package com.cbaeza.persistence.management.users;
 
 import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
 import com.cbaeza.model.commons.ws.user.WSUser;
+import com.cbaeza.model.commons.ws.user.WSUsers;
+import com.cbaeza.persistence.domain.User;
+import com.cbaeza.persistence.repositories.UserMgmtRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -16,7 +22,10 @@ public class UserMgmtImpl implements UserMgmt {
 
     private static UserMgmt instance;
 
-    // anywhay, expone  singleton
+    @Autowired
+    private UserMgmtRepository userMgmtRepository;
+
+    // anywhay, expose  singleton
     public static UserMgmt getInstance() {
         if (instance == null)
             return new UserMgmtImpl();
@@ -38,7 +47,19 @@ public class UserMgmtImpl implements UserMgmt {
 
     @Override
     public WSUser getUserInformation(Long userID) {
-        // TODO impl with persistence
-        return new WSUser(userID, "dummy", "dummy@dummy.de", GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime());
+        final User user = userMgmtRepository.findOne(userID);
+        // wrapper to WS, why? so we can decide what we are exposing in WS world
+        return new WSUser(Long.valueOf(user.getId()), user.getUsername(), user.getEmail(), user.getCreationdate(), user.getLastupdate());
+    }
+
+    @Override
+    public WSUsers getAllUsers() {
+        final List<User> allUsers = userMgmtRepository.findAllUsers();
+        final List<WSUser> wsUsers = new ArrayList<WSUser>();
+        // wrapper to WS, why? so we can decide what we are exposing in WS world
+        for (User u : allUsers) {
+            wsUsers.add(new WSUser(Long.valueOf(u.getId()), u.getUsername(), u.getEmail(), u.getCreationdate(), u.getLastupdate()));
+        }
+        return new WSUsers(wsUsers);
     }
 }

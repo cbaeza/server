@@ -41,4 +41,12 @@ public interface UserManagementResource {
      */
     WS getUserInformation(@PathVariable("userID") Long userID);
 
+    /**
+     * Return a list with all users.
+     *
+     * @return
+     */
+    WS getAllUsers();
+
+
 }

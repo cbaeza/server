@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+
+    <modelVersion>4.0.0</modelVersion>
     <groupId>server</groupId>
     <artifactId>server</artifactId>
     <packaging>pom</packaging>
+
     <version>1.0-SNAPSHOT</version>
 
     <modules>
@@ -19,18 +21,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.data.jpa.version>1.4.3.RELEASE</spring.data.jpa.version>
         <spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+        <!--spring.framework.version>3.1.0.BUILD-SNAPSHOT</spring.framework.version-->
         <junit.verion>4.8.2</junit.verion>
         <servlet.api.version>2.5</servlet.api.version>
         <log4j.version>1.2.14</log4j.version>
         <jstl.version>1.1.2</jstl.version>
         <taglibs.version>1.1.2</taglibs.version>
         <xstream.version>1.4.1</xstream.version>
-        <xpp3_min.version>1.1.4c</xpp3_min.version>
+        <xpp3.min.version>1.1.4c</xpp3.min.version>
         <kxml2.version>2.3.0</kxml2.version>
-        <jackson-mapper-asl.version>1.4.2</jackson-mapper-asl.version>
+        <jackson.mapper.asl.version>1.4.2</jackson.mapper.asl.version>
         <spring.data.jpa>1.4.1.RELEASE</spring.data.jpa>
-        <!--spring.framework.version>3.1.0.BUILD-SNAPSHOT</spring.framework.version-->
+        <hibernate.entitymanage.version>3.6.10.Final</hibernate.entitymanage.version>
+        <hibernate.commons.annotations.version>3.2.0.Final</hibernate.commons.annotations.version>
+        <javax.transaction.version>1.1</javax.transaction.version>
+        <hibernate.jpa.api.version>1.0.1.Final</hibernate.jpa.api.version>
+        <javaee.web.api.version>7.0</javaee.web.api.version>
+        <mysql.connector.java.version>5.1.6</mysql.connector.java.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -120,7 +129,7 @@
         <dependency>
             <groupId>xpp3</groupId>
             <artifactId>xpp3_min</artifactId>
-            <version>${xpp3_min.version}</version>
+            <version>${xpp3.min.version}</version>
         </dependency>
 
         <dependency>
@@ -132,13 +141,51 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson-mapper-asl.version}</version>
+            <version>${jackson.mapper.asl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring.data.jpa}</version>
+        </dependency>
+
+        <!-- persistence -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.entitymanage.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>${hibernate.commons.annotations.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>${javax.transaction.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>${hibernate.jpa.api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>${javaee.web.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.java.version}</version>
         </dependency>
 
     </dependencies>

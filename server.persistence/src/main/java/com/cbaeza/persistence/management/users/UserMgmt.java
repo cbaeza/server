@@ -2,6 +2,7 @@ package com.cbaeza.persistence.management.users;
 
 import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
 import com.cbaeza.model.commons.ws.user.WSUser;
+import com.cbaeza.model.commons.ws.user.WSUsers;
 
 /**
  * User: cbaeza
@@ -35,4 +36,11 @@ public interface UserMgmt {
      * @return
      */
     WSUser getUserInformation(Long userID);
+
+    /**
+     * Return a list whit all users
+     *
+     * @return
+     */
+    WSUsers getAllUsers();
 }
