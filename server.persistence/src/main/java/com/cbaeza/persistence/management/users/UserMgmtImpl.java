@@ -8,6 +8,7 @@ import com.cbaeza.model.commons.ws.user.WSUser;
 import com.cbaeza.model.commons.ws.user.WSUsers;
 import com.cbaeza.persistence.domain.User;
 import com.cbaeza.persistence.repositories.UserMgmtRepository;
+import com.cbaeza.persistence.utils.PersistenceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -55,18 +56,13 @@ public class UserMgmtImpl implements UserMgmt {
         if (user == null)
             return new WSError(Error.NOT_FOUND);
 
-        // wrapper to WS, why? so we can decide what we are exposing in WS world
-        return new WSUser(Long.valueOf(user.getId()), user.getUsername(), user.getEmail(), user.getCreationdate(), user.getLastupdate());
+
+        return PersistenceUtils.transform(user);
     }
 
     @Override
     public WSUsers getAllUsers() {
         final List<User> allUsers = userMgmtRepository.findAllUsers();
-        final List<WSUser> wsUsers = new ArrayList<WSUser>();
-        // wrapper to WS, why? so we can decide what we are exposing in WS world
-        for (User u : allUsers) {
-            wsUsers.add(new WSUser(Long.valueOf(u.getId()), u.getUsername(), u.getEmail(), u.getCreationdate(), u.getLastupdate()));
-        }
-        return new WSUsers(wsUsers);
+        return PersistenceUtils.transformList(allUsers) ;
     }
 }

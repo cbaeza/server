@@ -2,6 +2,7 @@ package com.cbaeza.model.commons.ws.user;
 
 import com.cbaeza.model.commons.ws.WS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ public class WSUsers implements WS {
 
     public WSUsers(List<WSUser> wsUsers) {
         this.wsUsers = wsUsers;
+    }
+
+    public WSUsers() {
+        this.wsUsers = new ArrayList<WSUser>();
     }
 
     public List<WSUser> getWsUsers() {
