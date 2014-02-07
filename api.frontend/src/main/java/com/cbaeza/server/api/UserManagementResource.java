@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface UserManagementResource {
 
     WS authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password);
+
+    WS createUser(@PathVariable("username") final String username, @PathVariable("email") final String email, @PathVariable("password") final String password);
+
 }
