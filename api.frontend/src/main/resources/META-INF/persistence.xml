@@ -6,6 +6,7 @@
                                  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
     <persistence-unit name="jpa.server">
+        <class>com.cbaeza.persistence.domain.User </class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/server"/>
@@ -16,8 +17,5 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
-        <class>
-            com.cbaeza.persistence.domain.User
-        </class>
     </persistence-unit>
 </persistence>
