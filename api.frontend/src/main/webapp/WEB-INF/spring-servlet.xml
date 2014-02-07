@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
-    <context:component-scan base-package="com.cbaeza.agenda"/>
+    <context:component-scan base-package="com.cbaeza.persistence"/>
 
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven/>
