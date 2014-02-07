@@ -1,4 +1,4 @@
-package com.cbaeza.server.api;
+package com.cbaeza.server.api.user;
 
 import com.cbaeza.model.commons.ws.WS;
 import org.springframework.web.bind.annotation.PathVariable;

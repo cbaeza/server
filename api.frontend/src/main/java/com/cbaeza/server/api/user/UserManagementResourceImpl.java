@@ -1,8 +1,9 @@
-package com.cbaeza.server.api;
+package com.cbaeza.server.api.user;
 
 import com.cbaeza.model.commons.authentication.WSAuthentication;
 import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.persistence.management.users.UserMgmtImpl;
+import com.cbaeza.server.api.user.UserManagementResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
