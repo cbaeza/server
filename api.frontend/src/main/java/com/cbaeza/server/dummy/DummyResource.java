@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * Place to probe new ideas !
+ *
  * Root resource (exposed at "myresource" path)
  */
 @Component
 @RequestMapping("/dummy")
-public class MyResource {
+public class DummyResource {
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
