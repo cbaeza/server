@@ -35,4 +35,10 @@ public class UserMgmtImpl implements UserMgmt {
         // TODO impl with persistence
         return new WSUser(2L, username, userEmail, GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime());
     }
+
+    @Override
+    public WSUser getUserInformation(Long userID) {
+        // TODO impl with persistence
+        return new WSUser(userID, "dummy", "dummy@dummy.de", GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime());
+    }
 }

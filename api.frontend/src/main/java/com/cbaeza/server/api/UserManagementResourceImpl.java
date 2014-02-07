@@ -25,26 +25,12 @@ public class UserManagementResourceImpl implements UserManagementResource {
     @Autowired
     private UserMgmtImpl userMgmt;
 
-    /**
-     * Example: http://localhost:8080/server-api/rest/users
-     * Method: GET
-     *
-     * @return a dummy hello
-     */
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     public WS hello() {
         return new WSAuthentication(1L, "dummy", UUID.randomUUID().toString());
     }
 
-    /**
-     * Example: http://localhost:8080/server-api/rest/users/authenticate/test@test/test
-     * Method: POST
-     *
-     * @param username username
-     * @param password the password in SHA
-     * @return
-     */
     @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
@@ -52,19 +38,17 @@ public class UserManagementResourceImpl implements UserManagementResource {
         return userMgmt.authenticateUser(username, password);
     }
 
-    /**
-     * Create a new user.
-     * Example: http://localhost:8080/server-api/rest/users/create/carlos.baeza/test@test/test
-     * Method: POST
-     *
-     * @param username e.g. user email
-     * @param password the password in SHA
-     * @return
-     */
     @RequestMapping(value = "/create/{username}/{email}/{password}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
     public WS createUser(@PathVariable("username") String username, @PathVariable("email") String email, @PathVariable("password") String password) {
         return userMgmt.createUser(username, email, password);
+    }
+
+    @RequestMapping(value = "/user/{userID}", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
+    @ResponseBody
+    @Override
+    public WS getUserInformation(@PathVariable("userID") Long userID) {
+        return userMgmt.getUserInformation(userID);
     }
 }
