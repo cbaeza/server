@@ -23,6 +23,12 @@ public class WSError implements WS {
         this.timestamp = GregorianCalendar.getInstance().getTime();
     }
 
+    public WSError(Error error) {
+        this.errorCode = error.getCode();
+        this.message = error.getMessage();
+        this.timestamp = GregorianCalendar.getInstance().getTime();
+    }
+
     public int getErrorCode() {
         return errorCode;
     }

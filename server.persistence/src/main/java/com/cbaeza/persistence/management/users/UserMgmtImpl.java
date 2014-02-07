@@ -1,6 +1,9 @@
 package com.cbaeza.persistence.management.users;
 
+import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
+import com.cbaeza.model.commons.ws.errors.Error;
+import com.cbaeza.model.commons.ws.errors.WSError;
 import com.cbaeza.model.commons.ws.user.WSUser;
 import com.cbaeza.model.commons.ws.user.WSUsers;
 import com.cbaeza.persistence.domain.User;
@@ -46,8 +49,12 @@ public class UserMgmtImpl implements UserMgmt {
     }
 
     @Override
-    public WSUser getUserInformation(Long userID) {
+    public WS getUserInformation(Long userID) {
         final User user = userMgmtRepository.findOne(userID);
+
+        if (user == null)
+            return new WSError(Error.NOT_FOUND);
+
         // wrapper to WS, why? so we can decide what we are exposing in WS world
         return new WSUser(Long.valueOf(user.getId()), user.getUsername(), user.getEmail(), user.getCreationdate(), user.getLastupdate());
     }
