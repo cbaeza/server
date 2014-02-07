@@ -10,19 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Place to probe new ideas !
- *
+ * <p/>
  * Root resource (exposed at "myresource" path)
  */
 @Component
 @RequestMapping("/dummy")
 public class DummyResource {
 
-    /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
-     */
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     public String getIt() {
