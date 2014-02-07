@@ -16,18 +16,26 @@
     </modules>
 
     <properties>
-        <jersey.version>2.5.1</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring3.version>3.2.3.RELEASE</spring3.version>
         <spring.data.jpa.version>1.4.3.RELEASE</spring.data.jpa.version>
-        <spring.framework.version>3.1.0.BUILD-SNAPSHOT</spring.framework.version>
+        <spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+        <junit.verion>4.8.2</junit.verion>
+        <servlet.api.version>2.5</servlet.api.version>
+        <log4j.version>1.2.14</log4j.version>
+        <jstl.version>1.1.2</jstl.version>
+        <taglibs.version>1.1.2</taglibs.version>
+        <xstream.version>1.4.1</xstream.version>
+        <xpp3_min.version>1.1.4c</xpp3_min.version>
+        <kxml2.version>2.3.0</kxml2.version>
+        <jackson-mapper-asl.version>1.4.2</jackson-mapper-asl.version>
+        <!--spring.framework.version>3.1.0.BUILD-SNAPSHOT</spring.framework.version-->
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>${junit.verion}</version>
             <type>jar</type>
             <scope>test</scope>
         </dependency>
@@ -66,7 +74,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${servlet.api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -81,7 +89,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.14</version>
+            <version>${log4j.version}</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -89,7 +97,7 @@
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.1.2</version>
+            <version>${jstl.version}</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -97,7 +105,7 @@
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
-            <version>1.1.2</version>
+            <version>${taglibs.version}</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -105,25 +113,25 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.1</version>
+            <version>${xstream.version}</version>
         </dependency>
 
         <dependency>
             <groupId>xpp3</groupId>
             <artifactId>xpp3_min</artifactId>
-            <version>1.1.4c</version>
+            <version>${xpp3_min.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.sf.kxml</groupId>
             <artifactId>kxml2</artifactId>
-            <version>2.3.0</version>
+            <version>${kxml2.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.4.2</version>
+            <version>${jackson-mapper-asl.version}</version>
         </dependency>
 
     </dependencies>
