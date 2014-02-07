@@ -1,7 +1,7 @@
 package com.cbaeza.persistence.management.users;
 
-import com.cbaeza.model.commons.authentication.WSAuthentication;
-import com.cbaeza.model.commons.user.WSUser;
+import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
+import com.cbaeza.model.commons.ws.user.WSUser;
 import org.springframework.stereotype.Component;
 
 import java.util.GregorianCalendar;

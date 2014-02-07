@@ -1,4 +1,4 @@
-package com.cbaeza.model.commons.user;
+package com.cbaeza.model.commons.ws.user;
 
 import com.cbaeza.model.commons.ws.WS;
 

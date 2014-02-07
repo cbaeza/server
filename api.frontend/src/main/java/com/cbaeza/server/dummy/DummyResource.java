@@ -1,7 +1,7 @@
 package com.cbaeza.server.dummy;
 
-import com.cbaeza.model.commons.errors.Error;
-import com.cbaeza.model.commons.errors.WSError;
+import com.cbaeza.model.commons.ws.errors.Error;
+import com.cbaeza.model.commons.ws.errors.WSError;
 import com.cbaeza.model.commons.ws.WS;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;

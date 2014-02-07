@@ -1,4 +1,4 @@
-package com.cbaeza.model.commons.errors;
+package com.cbaeza.model.commons.ws.errors;
 
 import com.cbaeza.model.commons.ws.WS;
 

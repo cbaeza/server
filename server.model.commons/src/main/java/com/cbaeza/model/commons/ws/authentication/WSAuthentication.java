@@ -1,4 +1,4 @@
-package com.cbaeza.model.commons.authentication;
+package com.cbaeza.model.commons.ws.authentication;
 
 import com.cbaeza.model.commons.ws.WS;
 
