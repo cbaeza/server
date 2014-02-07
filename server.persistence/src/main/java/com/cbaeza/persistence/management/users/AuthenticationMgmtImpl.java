@@ -1,6 +1,7 @@
 package com.cbaeza.persistence.management.users;
 
 import com.cbaeza.model.commons.authentication.WSAuthentication;
+import com.cbaeza.model.commons.ws.WS;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -14,6 +15,7 @@ public class AuthenticationMgmtImpl implements AuthenticationMgmt {
 
     private static AuthenticationMgmt instance;
 
+    // anywhay, expone  singleton
     public static AuthenticationMgmt getInstance() {
         if (instance == null)
             return new AuthenticationMgmtImpl();

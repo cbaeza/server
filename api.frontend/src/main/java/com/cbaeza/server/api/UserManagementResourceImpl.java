@@ -1,5 +1,6 @@
 package com.cbaeza.server.api;
 
+import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.model.commons.authentication.WSAuthentication;
 import com.cbaeza.persistence.management.users.AuthenticationMgmtImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.UUID;
 
 /**
+ * Principal controller that expone user management functionality.
+ *
  * User: cbaeza
  * Since: 24.01.14
  */
 @Controller
 @RequestMapping("/users")
-public class UserAuthenticationResource {
+public class UserManagementResourceImpl implements UserManagementResource{
 
     @Autowired
     private AuthenticationMgmtImpl authentication;
@@ -29,7 +32,7 @@ public class UserAuthenticationResource {
      */
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
-    public WSAuthentication hello() {
+    public WS hello() {
         return new WSAuthentication(1L, "dummy", UUID.randomUUID().toString());
     }
 
@@ -42,7 +45,7 @@ public class UserAuthenticationResource {
      */
     @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
     @ResponseBody
-    public WSAuthentication authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
+    public WS authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
         return authentication.authenticateUser(username, password);
     }
 }

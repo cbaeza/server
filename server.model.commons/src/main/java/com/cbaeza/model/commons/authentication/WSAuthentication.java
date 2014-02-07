@@ -1,5 +1,7 @@
 package com.cbaeza.model.commons.authentication;
 
+import com.cbaeza.model.commons.ws.WS;
+
 /**
  * User: cbaeza
  * Since: 06.02.14
