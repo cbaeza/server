@@ -20,7 +20,7 @@ public interface UserManagementResource {
     WS authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password);
 
     /**
-     * TODO: Take care who are allowed to use this method.! Idea: maybe do not expone it?
+     * TODO: Take care who are allowed to use this method.! Idea: maybe do not expose it?
      * Create a new user.
      * Example: http://localhost:8080/server-api/rest/users/create/carlos.baeza/test@test/test
      * Method: POST

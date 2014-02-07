@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.UUID;
 
 /**
- * Principal controller that expone user management functionality.
+ * Principal controller that expose user management functionality.
  * <p/>
  * User: cbaeza
  * Since: 24.01.14

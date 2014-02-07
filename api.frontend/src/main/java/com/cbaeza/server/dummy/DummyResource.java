@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Place to probe new ideas !
  * <p/>
- * Root resource (exposed at "myresource" path)
+ * Root resource (exposed at "dummy" path)
  */
 @Component
 @RequestMapping("/dummy")
