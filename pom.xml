@@ -20,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.data.jpa.version>1.4.3.RELEASE</spring.data.jpa.version>
-        <spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+        <spring.framework.version>3.2.5.RELEASE</spring.framework.version>
         <!--spring.framework.version>3.1.0.BUILD-SNAPSHOT</spring.framework.version-->
         <junit.verion>4.8.2</junit.verion>
         <servlet.api.version>2.5</servlet.api.version>
@@ -42,6 +42,7 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
