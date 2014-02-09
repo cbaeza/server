@@ -15,10 +15,10 @@
     <!-- scan components -->
     <context:component-scan base-package="com.cbaeza"/>
 
-    <!--bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="3"/-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="3"/>
 
     <!-- Bean AnnotationMethodHandlerAdapter -->
-    <!--bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" p:order="3">
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" p:order="3">
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
@@ -32,32 +32,7 @@
                 </bean>
             </list>
         </property>
-    </bean-->
-
-
-
-    <bean name="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-        <property name="useTrailingSlashMatch" value="false"></property>
     </bean>
-
-    <bean name='handlerAdapter' class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'>
-        <property name='messageConverters'>
-            <list>
-                <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
-                    <property name="marshaller" ref="xstreamMarshaller"/>
-                    <property name="unmarshaller" ref="xstreamMarshaller"/>
-                </bean>
-                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-                    <property name="objectMapper">
-                        <ref bean="jacksonObjectMapper"/>
-                    </property>
-                </bean>
-            </list>
-        </property>
-    </bean>
-
-
-
 
     <!-- Jackson Mapper -->
     <bean id="jacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
@@ -91,7 +66,7 @@
     <!--
         Content negotiation
     -->
-    <!--bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="mediaTypes">
             <map>
                 <entry key="json" value="application/json"/>
@@ -118,7 +93,7 @@
     <bean id="jsonMediaType" class="org.springframework.http.MediaType">
         <constructor-arg value="application"/>
         <constructor-arg value="json"/>
-    </bean-->
+    </bean>
 
     <!--
         PERSISTENCE SUPPORT HERE (jpa, hibernate, etc)
