@@ -15,39 +15,63 @@
     <!-- scan components -->
     <context:component-scan base-package="com.cbaeza"/>
 
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="3"/>
+    <!--bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="3"/-->
 
     <!-- Bean AnnotationMethodHandlerAdapter -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" p:order="3">
+    <!--bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" p:order="3">
         <property name="messageConverters">
             <list>
-                <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
-                <ref bean="marshallingHttpMessageConverter"/>
-            </list>
-        </property>
-    </bean>
-
-
-    <!--bean name='handlerAdapter' class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'>
-        <property name='messageConverters'>
-            <list>
-                <bean id="marshallingHttpMessageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
                     <property name="marshaller" ref="xstreamMarshaller"/>
                     <property name="unmarshaller" ref="xstreamMarshaller"/>
+                </bean>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                    <property name="objectMapper">
+                        <ref bean="jacksonObjectMapper"/>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean-->
+
+
+
+    <bean name="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="useTrailingSlashMatch" value="false"></property>
+    </bean>
+
+    <bean name='handlerAdapter' class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'>
+        <property name='messageConverters'>
+            <list>
+                <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                    <property name="marshaller" ref="xstreamMarshaller"/>
+                    <property name="unmarshaller" ref="xstreamMarshaller"/>
+                </bean>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                    <property name="objectMapper">
+                        <ref bean="jacksonObjectMapper"/>
+                    </property>
                 </bean>
             </list>
         </property>
     </bean>
 
-    <bean name='handlerMapping' class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping'>
-        <property name='useTrailingSlashMatch' value='false'></property>
-    </bean-->
 
 
-    <!-- Bean MarshallingHttpMessageConverter -->
-    <bean id="marshallingHttpMessageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
-        <property name="marshaller" ref="xstreamMarshaller"/>
-        <property name="unmarshaller" ref="xstreamMarshaller"/>
+
+    <!-- Jackson Mapper -->
+    <bean id="jacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
+
+    <!-- set Jackson to ignore unknown properties within Spring -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="jacksonObjectMapper"/>
+        <property name="targetMethod" value="configure"/>
+        <property name="arguments">
+            <list>
+                <value type="org.codehaus.jackson.map.DeserializationConfig.Feature">FAIL_ON_UNKNOWN_PROPERTIES</value>
+                <value>false</value>
+            </list>
+        </property>
     </bean>
 
     <!-- Bean XStreamMarshaller -->
@@ -56,6 +80,7 @@
         <property name="aliases">
             <props>
                 <prop key="WSAuthentication">com.cbaeza.model.commons.ws.authentication.WSAuthentication</prop>
+                <prop key="WSAuth">com.cbaeza.model.commons.ws.authentication.WSAuth</prop>
                 <prop key="WSUser">com.cbaeza.model.commons.ws.user.WSUser</prop>
                 <prop key="WSUsers">com.cbaeza.model.commons.ws.user.WSUsers</prop>
                 <prop key="WSError">com.cbaeza.model.commons.ws.errors.WSError</prop>
@@ -63,8 +88,10 @@
         </property>
     </bean>
 
-    <!-- Content negotiation -->
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <!--
+        Content negotiation
+    -->
+    <!--bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="mediaTypes">
             <map>
                 <entry key="json" value="application/json"/>
@@ -73,14 +100,17 @@
         </property>
         <property name="defaultViews">
             <list>
-                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+                    <property name="objectMapper">
+                        <ref bean="jacksonObjectMapper"/>
+                    </property>
+                </bean>
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
                     <constructor-arg ref="xstreamMarshaller"/>
                 </bean>
             </list>
         </property>
         <property name="defaultContentType" ref="jsonMediaType"/>
-        <!--property name="defaultContentType" value="application/xml" /-->
         <property name="ignoreAcceptHeader" value="false"/>
         <property name="favorPathExtension" value="true"/>
     </bean>
@@ -88,7 +118,7 @@
     <bean id="jsonMediaType" class="org.springframework.http.MediaType">
         <constructor-arg value="application"/>
         <constructor-arg value="json"/>
-    </bean>
+    </bean-->
 
     <!--
         PERSISTENCE SUPPORT HERE (jpa, hibernate, etc)
