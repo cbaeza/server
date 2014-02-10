@@ -1,0 +1,2 @@
+hi I am a public resource!
+Get me: http://localhost:8080/server-api/rest/resources/test.txt
