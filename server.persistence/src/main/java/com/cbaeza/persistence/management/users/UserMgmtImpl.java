@@ -12,7 +12,6 @@ import com.cbaeza.persistence.utils.PersistenceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.UUID;
@@ -24,45 +23,45 @@ import java.util.UUID;
 @Component
 public class UserMgmtImpl implements UserMgmt {
 
-    private static UserMgmt instance;
+	private static UserMgmt instance;
 
-    @Autowired
-    private UserMgmtRepository userMgmtRepository;
+	@Autowired
+	private UserMgmtRepository userMgmtRepository;
 
-    // anywhay, expose  singleton
-    public static UserMgmt getInstance() {
-        if (instance == null)
-            return new UserMgmtImpl();
-        else
-            return instance;
-    }
+	// anywhay, expose  singleton
+	public static UserMgmt getInstance() {
+		if (instance == null)
+			instance = new UserMgmtImpl();
 
-    @Override
-    public WSAuthentication authenticateUser(String username, String password) {
-        // TODO impl with persistence
-        return new WSAuthentication(1L, username, UUID.randomUUID().toString());
-    }
+		return instance;
+	}
 
-    @Override
-    public WSUser createUser(String username, String userEmail, String password) {
-        // TODO impl with persistence
-        return new WSUser(2L, username, userEmail, GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime());
-    }
+	@Override
+	public WSAuthentication authenticateUser(String username, String password) {
+		// TODO impl with persistence
+		return new WSAuthentication(1L, username, UUID.randomUUID().toString());
+	}
 
-    @Override
-    public WS getUserInformation(Long userID) {
-        final User user = userMgmtRepository.findOne(userID);
+	@Override
+	public WSUser createUser(String username, String userEmail, String password) {
+		// TODO impl with persistence
+		return new WSUser(2L, username, userEmail, GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime());
+	}
 
-        if (user == null)
-            return new WSError(Error.NOT_FOUND);
+	@Override
+	public WS getUserInformation(Long userID) {
+		final User user = userMgmtRepository.findOne(userID);
+
+		if (user == null)
+			return new WSError(Error.NOT_FOUND);
 
 
-        return PersistenceUtils.transform(user);
-    }
+		return PersistenceUtils.transform(user);
+	}
 
-    @Override
-    public WSUsers getAllUsers() {
-        final List<User> allUsers = userMgmtRepository.findAllUsers();
-        return PersistenceUtils.transformList(allUsers) ;
-    }
+	@Override
+	public WSUsers getAllUsers() {
+		final List<User> allUsers = userMgmtRepository.findAllUsers();
+		return PersistenceUtils.transformList(allUsers);
+	}
 }
