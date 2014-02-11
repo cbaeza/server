@@ -1,7 +1,6 @@
 package com.cbaeza.persistence.management.users;
 
 import com.cbaeza.model.commons.ws.WS;
-import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
 
 /**
  * User: cbaeza
@@ -16,7 +15,7 @@ public interface UserMgmt {
      * @param password user password coded in SHA
      * @return
      */
-    WSAuthentication authenticateUser(String username, String password);
+    WS authenticateUser(String username, String password);
 
     /**
      * Create a single user in server.
@@ -26,7 +25,7 @@ public interface UserMgmt {
      * @param password  user password coded in SHA
      * @return
      */
-    WS createUser(String username, String userEmail, String password);
+    com.cbaeza.model.commons.ws.WS createUser(String username, String userEmail, String password);
 
     /**
      * Return basic user information.
@@ -34,12 +33,12 @@ public interface UserMgmt {
      * @param userID the unique user ID
      * @return
      */
-    WS getUserInformation(Long userID);
+    com.cbaeza.model.commons.ws.WS getUserInformation(Long userID);
 
     /**
      * Return a list whit all users
      *
      * @return
      */
-    WS getAllUsers();
+    com.cbaeza.model.commons.ws.WS getAllUsers();
 }

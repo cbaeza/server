@@ -59,6 +59,8 @@
                 <prop key="WSUser">com.cbaeza.model.commons.ws.user.WSUser</prop>
                 <prop key="WSUsers">com.cbaeza.model.commons.ws.user.WSUsers</prop>
                 <prop key="WSError">com.cbaeza.model.commons.ws.errors.WSError</prop>
+                <prop key="WSSessionToken">com.cbaeza.model.commons.ws.session.WSSessionToken</prop>
+                <prop key="WSSessionTokens">com.cbaeza.model.commons.ws.session.WSSessionTokens</prop>
             </props>
         </property>
     </bean>
