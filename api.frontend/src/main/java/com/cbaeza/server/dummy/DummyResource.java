@@ -53,6 +53,11 @@ public class DummyResource {
             return wsAuth;
     }
 
+	/**
+	 * Example: http://localhost:8181/server-api/rest/users/dummy/tokens
+	 *
+	 * @return  all tokens
+	 */
     @RequestMapping(value = "tokens", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     public WS getAllTokens() {

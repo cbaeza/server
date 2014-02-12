@@ -45,7 +45,7 @@ public class UserMgmtImpl implements UserMgmt {
         final User userByUserName = userMgmtRepository.findUserByUserName(username);
 
         if (userByUserName == null)
-            throw new RuntimeException("No user found for: " + username);
+	        return new WSError(Error.NOT_AUTHORIZED);
 
         final WSAuthentication wsAuthentication;
 
