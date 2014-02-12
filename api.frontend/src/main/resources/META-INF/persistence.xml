@@ -8,6 +8,7 @@
     <persistence-unit name="jpa.server">
         <!-- here place to declare managed entities-->
         <class>com.cbaeza.persistence.domain.User</class>
+        <class>com.cbaeza.persistence.domain.Token</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/server"/>
