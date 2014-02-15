@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface UserManagementResource {
 
     /**
-     * Example: http://localhost:8080/server-api/rest/users/authenticate/test@test/test
+     * Example: http://localhost:8080/server-api/rest/users/authenticate/dummy/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
      * Method: POST
      *
      * @param username username
      * @param password the password in SHA
      * @return
      */
-    WS authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password);
+    WS authenticateUserByUsernameAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password);
 
     /**
      * TODO: Take care who are allowed to use this method.! Idea: maybe do not expose it?

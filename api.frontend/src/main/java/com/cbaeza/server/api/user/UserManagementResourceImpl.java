@@ -34,7 +34,7 @@ public class UserManagementResourceImpl implements UserManagementResource {
     @RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
-    public WS authenticateUserByEmailAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
+    public WS authenticateUserByUsernameAndPassword(@PathVariable("username") final String username, @PathVariable("password") final String password) {
         return userMgmt.authenticateUser(username, password);
     }
 
