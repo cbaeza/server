@@ -14,11 +14,11 @@ public interface SessionTokenMgmt {
 
     String createToken();
 
-    void removeToken(String token);
+    void removeToken(Long tokenID);
 
     boolean checkValidToken(String token);
 
-    boolean expireToken(String token);
+    boolean expireToken(Long tokenID);
 
     WSSessionTokens getAllTokens();
 }

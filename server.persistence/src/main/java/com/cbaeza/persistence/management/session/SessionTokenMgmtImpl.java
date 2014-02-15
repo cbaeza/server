@@ -23,8 +23,8 @@ public class SessionTokenMgmtImpl implements SessionTokenMgmt {
 
     @Override
     public void saveSessionToken(Long userID, String token) {
-        final Token sessionToken = new Token(userID, token, GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime(), true);
-        tokenMgmtRepository.save(sessionToken);
+        final Token t = new Token(userID, token, GregorianCalendar.getInstance().getTime(), GregorianCalendar.getInstance().getTime(), true);
+        tokenMgmtRepository.save(t);
     }
 
     @Override
@@ -34,17 +34,27 @@ public class SessionTokenMgmtImpl implements SessionTokenMgmt {
     }
 
     @Override
-    public void removeToken(String token) {
-
+    public void removeToken(Long tokenID) {
+        tokenMgmtRepository.delete(tokenID);
     }
 
     @Override
     public boolean checkValidToken(String token) {
+        final Token t = tokenMgmtRepository.findToken(token);
+        if (t != null) {
+            return t.getValid();
+        }
         return false;
     }
 
     @Override
-    public boolean expireToken(String token) {
+    public boolean expireToken(Long tokenID) {
+        final Token t = tokenMgmtRepository.findOne(tokenID);
+        if (t != null) {
+            t.setValid(false);
+            tokenMgmtRepository.save(t);
+            return true;
+        }
         return false;
     }
 

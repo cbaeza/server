@@ -42,16 +42,16 @@ public class UserMgmtImpl implements UserMgmt {
     @Override
     public WS authenticateUser(String username, String password) {
         // TODO impl with persistence
-        final User userByUserName = userMgmtRepository.findUserByUserName(username);
+        final User user = userMgmtRepository.findUserByUserName(username);
 
-        if (userByUserName == null)
+        if (user == null)
 	        return new WSError(Error.NOT_AUTHORIZED);
 
         final WSAuthentication wsAuthentication;
 
-        if (userByUserName.getPassword().equals(password)) {
-            wsAuthentication = new WSAuthentication(userByUserName.getId(), userByUserName.getUsername(), sessionTokenMgmt.createToken());
-            sessionTokenMgmt.saveSessionToken(userByUserName.getId(), wsAuthentication.getToken());
+        if (user.getPassword().equals(password)) {
+            wsAuthentication = new WSAuthentication(user.getId(), user.getUsername(), sessionTokenMgmt.createToken());
+            sessionTokenMgmt.saveSessionToken(user.getId(), wsAuthentication.getToken());
             return wsAuthentication;
         } else {
             return new WSError(Error.NOT_AUTHORIZED);

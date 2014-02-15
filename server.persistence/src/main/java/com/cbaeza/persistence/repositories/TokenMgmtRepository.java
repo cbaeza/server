@@ -14,4 +14,7 @@ public interface TokenMgmtRepository extends CrudRepository<Token, Long> {
 
     @Query("FROM Token")
     List<Token> findAllTokens();
+
+    @Query("SELECT t FROM Token t WHERE t.token = ?1")
+    Token findToken(String token);
 }
