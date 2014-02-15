@@ -25,7 +25,7 @@ insert into server.user (username, email, password, lastupdate) value ("dummy3",
 -- TABLE TOKEN
 --
 CREATE TABLE `server`.`token` (
-  `id` INT UNSIGNED NOT NULL DEFAULT 1,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT DEFAULT 1,
   `userId` INT UNSIGNED NOT NULL,
   `token` VARCHAR(45) NOT NULL,
   `creationDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

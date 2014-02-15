@@ -14,7 +14,7 @@ import java.util.Date;
  * Since: 11.02.14
  */
 @Entity
-@Table(name = "token", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+@Table(name = "token")
 @XmlRootElement
 public class Token {
     private static final long serialVersionUID = 1L;
