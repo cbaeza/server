@@ -62,7 +62,7 @@ public class PersistenceUtils {
 
         final WSSessionTokens result = new WSSessionTokens();
         for (Token token : list) {
-            result.getList().add(new WSSessionToken(token.getToken()));
+            result.getList().add(new WSSessionToken(token.getId(), token.getUserId(), token.getToken(), token.getCreationDate(), token.getLastTouch(), token.getValid()));
         }
         return result;
     }
