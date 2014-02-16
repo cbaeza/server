@@ -1,5 +1,6 @@
 package com.cbaeza.persistence.management.whishlist;
 
+import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.model.commons.ws.whishlist.WSWishlists;
 import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
 
@@ -13,5 +14,5 @@ public interface WhishlistMgmt {
 
     void removeItemFromWishlist(WSWishlist wsWishlist);
 
-    WSWishlists getWishlist(Long ID);
+    WS getWishlist(Long userID, String token);
 }

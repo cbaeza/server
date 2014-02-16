@@ -7,8 +7,11 @@ import com.cbaeza.model.commons.ws.session.WSSessionToken;
 import com.cbaeza.model.commons.ws.session.WSSessionTokens;
 import com.cbaeza.model.commons.ws.user.WSUser;
 import com.cbaeza.model.commons.ws.user.WSUsers;
+import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
+import com.cbaeza.model.commons.ws.whishlist.WSWishlists;
 import com.cbaeza.persistence.domain.Token;
 import com.cbaeza.persistence.domain.User;
+import com.cbaeza.persistence.domain.Wishlist;
 
 import java.util.List;
 
@@ -66,4 +69,22 @@ public class PersistenceUtils {
         }
         return result;
     }
+
+    /**
+     * Wrapper
+     *
+     * @param list
+     * @return
+     */
+    public static WSWishlists transformWishListToWSWishlist(List<Wishlist> list) {
+        if (list == null || list.isEmpty())
+            return new WSWishlists();
+
+        final WSWishlists result = new WSWishlists();
+        for (Wishlist wl : list) {
+            result.getList().add(new WSWishlist(wl.getId().toString(), wl.getUserid().toString(), wl.getProductid(), wl.getProducttype(), wl.getCreationdate()));
+        }
+        return result;
+    }
+
 }

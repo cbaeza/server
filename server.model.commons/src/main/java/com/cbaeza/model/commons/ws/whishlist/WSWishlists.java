@@ -2,6 +2,7 @@ package com.cbaeza.model.commons.ws.whishlist;
 
 import com.cbaeza.model.commons.ws.WS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,10 @@ import java.util.List;
 public class WSWishlists implements WS {
 
     private List<WSWishlist> list;
+
+    public WSWishlists() {
+        this.list = new ArrayList<WSWishlist>(0);
+    }
 
     public WSWishlists(List<WSWishlist> list) {
         this.list = list;

@@ -1,13 +1,31 @@
 package com.cbaeza.persistence.management.whishlist;
 
+import com.cbaeza.model.commons.ws.WS;
+import com.cbaeza.model.commons.ws.errors.Error;
+import com.cbaeza.model.commons.ws.errors.WSError;
 import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlists;
+import com.cbaeza.persistence.domain.Wishlist;
+import com.cbaeza.persistence.management.session.SessionTokenMgmtImpl;
+import com.cbaeza.persistence.repositories.WishlistMgmtRepository;
+import com.cbaeza.persistence.utils.PersistenceUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * User: cbaeza
  * Since: 11.02.14
  */
+@Component
 public class WhishlistMgmtImpl implements WhishlistMgmt {
+
+    @Autowired
+    private WishlistMgmtRepository wishlistMgmtRepository;
+    @Autowired
+    private SessionTokenMgmtImpl sessionTokenMgmt;
+
+
     @Override
     public void addItemToWishlist(WSWishlist wsWishlist) {
 
@@ -19,7 +37,16 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
     }
 
     @Override
-    public WSWishlists getWishlist(Long ID) {
-        return null;
+    public WS getWishlist(Long userID, String token) {
+        final boolean valid = sessionTokenMgmt.checkValidToken(token);
+
+        if (valid) {
+            final List<Wishlist> wishlistByUser = wishlistMgmtRepository.findWishlistByUser(userID);
+            return PersistenceUtils.transformWishListToWSWishlist(wishlistByUser);
+        } else {
+            return new WSError(Error.NOT_AUTHORIZED);
+        }
     }
+
+
 }

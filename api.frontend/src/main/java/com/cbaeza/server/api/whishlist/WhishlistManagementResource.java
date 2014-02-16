@@ -1,7 +1,7 @@
 package com.cbaeza.server.api.whishlist;
 
+import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlists;
 
 /**
  * User: cbaeza
@@ -13,7 +13,7 @@ public interface WhishlistManagementResource {
 
     WSWishlist getWishlistItem(Long ID, String token);
 
-    WSWishlists getWishlists(Long userID, String token);
+    WS getWishlists(Long userID, String token);
 
     WSWishlist removeWishlistItem(Long ID, String token);
 
