@@ -48,6 +48,15 @@ public class SessionTokenMgmtImpl implements SessionTokenMgmt {
     }
 
     @Override
+    public boolean checkValidTokenByUser(String token, Long userID) {
+        final Token t = tokenMgmtRepository.findTokenByUser(token, userID);
+        if (t != null) {
+            return t.getValid();
+        }
+        return false;
+    }
+
+    @Override
     public boolean expireToken(Long tokenID) {
         final Token t = tokenMgmtRepository.findOne(tokenID);
         if (t != null) {

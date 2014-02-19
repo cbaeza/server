@@ -38,7 +38,7 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
 
     @Override
     public WS getWishlist(Long userID, String token) {
-        final boolean valid = sessionTokenMgmt.checkValidToken(token);
+        final boolean valid = sessionTokenMgmt.checkValidTokenByUser(token, userID);
 
         if (valid) {
             final List<Wishlist> wishlistByUser = wishlistMgmtRepository.findWishlistByUser(userID);

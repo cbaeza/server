@@ -18,6 +18,8 @@ public interface SessionTokenMgmt {
 
     boolean checkValidToken(String token);
 
+    boolean checkValidTokenByUser(String token, Long userID);
+
     boolean expireToken(Long tokenID);
 
     WSSessionTokens getAllTokens();
