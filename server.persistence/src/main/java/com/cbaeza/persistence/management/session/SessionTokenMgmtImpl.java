@@ -68,6 +68,11 @@ public class SessionTokenMgmtImpl implements SessionTokenMgmt {
     }
 
     @Override
+    public boolean refreshToken(String token, Long userID) {
+        return false;
+    }
+
+    @Override
     public WSSessionTokens getAllTokens() {
         final List<Token> allTokens = tokenMgmtRepository.findAllTokens();
         return PersistenceUtils.transformListToWSSessionTokens(allTokens);

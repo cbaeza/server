@@ -22,5 +22,7 @@ public interface SessionTokenMgmt {
 
     boolean expireToken(Long tokenID);
 
+    boolean refreshToken(String token, Long userID);
+
     WSSessionTokens getAllTokens();
 }
