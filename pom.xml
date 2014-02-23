@@ -15,7 +15,8 @@
 		<module>utils</module>
 		<module>server.persistence</module>
 		<module>server.model.commons</module>
-	</modules>
+        <module>api.client</module>
+    </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -203,19 +204,31 @@
 
 		<!-- end persistence -->
 
+        <!-- J2EE -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
 			<version>${javaee.web.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+        <!-- end of J2EE -->
 
+        <!-- Mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.connector.java.version}</version>
 		</dependency>
+        <!-- end of Mysql -->
+
+        <!-- Apache Http components -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+        <!-- end of Apache Http components -->
 
 	</dependencies>
 
-</project>
+ </project>

@@ -11,5 +11,8 @@
 
     <artifactId>api.client</artifactId>
 
+    <dependencies>
+
+    </dependencies>
 
 </project>
