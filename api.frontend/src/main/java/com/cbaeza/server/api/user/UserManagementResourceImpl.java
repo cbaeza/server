@@ -1,7 +1,7 @@
 package com.cbaeza.server.api.user;
 
-import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
 import com.cbaeza.model.commons.ws.WS;
+import com.cbaeza.model.commons.ws.authentication.WSAuthentication;
 import com.cbaeza.persistence.management.users.UserMgmtImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,7 +52,7 @@ public class UserManagementResourceImpl implements UserManagementResource {
         return userMgmt.getUserInformation(userID);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
+    @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
     public WS getAllUsers() {

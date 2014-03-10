@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface UserManagementResource {
 
     /**
-     * Example: http://localhost:8080/server-api/rest/users/authenticate/dummy/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+     * Example: http://localhost:8181/server-api/rest/users/authenticate/dummy/a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
      * Method: POST
      *
      * @param username username
@@ -22,7 +22,7 @@ public interface UserManagementResource {
     /**
      * TODO: Take care who are allowed to use this method.! Idea: maybe do not expose it?
      * Create a new user.
-     * Example: http://localhost:8080/server-api/rest/users/create/carlos.baeza/test@test/test
+     * Example: http://localhost:8181/server-api/rest/users/create/carlos.baeza/test@test/test
      * Method: POST
      *
      * @param username e.g. user email
@@ -33,7 +33,7 @@ public interface UserManagementResource {
 
     /**
      * Get user information.
-     * Example: http://localhost:8080/server-api/rest/users/user/2000
+     * Example: http://localhost:8181/server-api/rest/users/user/2000
      * Method: GET
      *
      * @param userID unique user ID
@@ -43,6 +43,8 @@ public interface UserManagementResource {
 
     /**
      * Return a list with all users.
+     * Example: http://localhost:8181/server-api/rest/users
+     * Method: GET
      *
      * @return
      */

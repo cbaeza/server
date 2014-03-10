@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Since: 11.02.14
  */
 @Controller
-@RequestMapping("/whishlist")
+@RequestMapping("/wishlist")
 public class WhishlistManagementResourceImpl implements WhishlistManagementResource {
 
     @Autowired
@@ -31,15 +31,6 @@ public class WhishlistManagementResourceImpl implements WhishlistManagementResou
         return null;
     }
 
-    /**
-     * Example </br>
-     * User 10000: http://localhost:8080/server-api/rest/whishlist/10000/35eb2185-9bfc-4ed8-ad60-a8506ee686b9
-     * User 10001: http://localhost:8080/server-api/rest/whishlist/10001/38e62106-0910-4f94-b418-bfe646d11bc0
-     *
-     * @param userID a valid userID.
-     * @param token  a valid token for user.
-     * @return
-     */
     @RequestMapping(value = "/{userid}/{token}", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
