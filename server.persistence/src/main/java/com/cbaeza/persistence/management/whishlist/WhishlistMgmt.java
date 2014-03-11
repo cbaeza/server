@@ -15,4 +15,6 @@ public interface WhishlistMgmt {
     void removeItemFromWishlist(WSWishlist wsWishlist);
 
     WS getWishlist(Long userID, String token);
+
+    WS getWishlistItem(Long userID, Long item, String token);
 }

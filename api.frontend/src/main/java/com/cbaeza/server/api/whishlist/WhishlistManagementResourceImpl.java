@@ -26,15 +26,17 @@ public class WhishlistManagementResourceImpl implements WhishlistManagementResou
 
     }
 
+    @RequestMapping(value = "/{userid}/{item}/{token}", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
+    @ResponseBody
     @Override
-    public WSWishlist getWishlistItem(Long ID, String token) {
-        return null;
+    public WS getWishlistItem(@PathVariable("userid") Long userID, @PathVariable("item") Long item, @PathVariable("token") String token) {
+        return whishlistMgmt.getWishlistItem(userID, item, token);
     }
 
     @RequestMapping(value = "/{userid}/{token}", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
     @ResponseBody
     @Override
-    public WS getWishlists(@PathVariable("userid") Long userID, @PathVariable("token") String token) {
+    public WS getWishlist(@PathVariable("userid") Long userID, @PathVariable("token") String token) {
         return whishlistMgmt.getWishlist(userID, token);
     }
 

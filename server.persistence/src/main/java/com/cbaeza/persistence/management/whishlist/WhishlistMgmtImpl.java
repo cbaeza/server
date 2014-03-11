@@ -48,5 +48,20 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
         }
     }
 
+    @Override
+    public WS getWishlistItem(Long userID, Long item, String token) {
+        final boolean valid = sessionTokenMgmt.checkValidTokenByUser(token, userID);
+
+        if (valid) {
+            final Wishlist wishlistItem = wishlistMgmtRepository.findWishlistItemByUser(userID, item);
+            if (wishlistItem != null)
+                return new WSWishlist(wishlistItem.getId(), wishlistItem.getUserid(), wishlistItem.getProductid(), wishlistItem.getProducttype(), wishlistItem.getCreationdate());
+            else
+                return new WSError(Error.NOT_FOUND);
+        } else {
+            return new WSError(Error.NOT_AUTHORIZED);
+        }
+    }
+
 
 }

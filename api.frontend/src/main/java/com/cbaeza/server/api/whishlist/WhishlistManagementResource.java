@@ -13,18 +13,28 @@ public interface WhishlistManagementResource {
 
     /**
      * Example </br>
-     * User 10000: http://localhost:8080/server-api/rest/wishlist/10000/35eb2185-9bfc-4ed8-ad60-a8506ee686b9
-     * User 10001: http://localhost:8080/server-api/rest/wishlist/10001/38e62106-0910-4f94-b418-bfe646d11bc0
+     * User 10000: http://localhost:8181/server-api/rest/wishlist/10000/1/35eb2185-9bfc-4ed8-ad60-a8506ee686b9
+     * User 10001: http://localhost:8181/server-api/rest/wishlist/10001/5/38e62106-0910-4f94-b418-bfe646d11bc0
      *
-     * @param ID    a valid userID.
-     * @param token a valid token for user.
+     * @param userID a valid userID.
+     * @param item   a valid item.
+     * @param token  a valid token for user.
      * @return
      */
-    WSWishlist getWishlistItem(Long ID, String token);
+    WS getWishlistItem(Long userID, Long item, String token);
 
-    WS getWishlists(Long userID, String token);
+    /**
+     * Example </br>
+     * User 10000: http://localhost:8181/server-api/rest/wishlist/10000/35eb2185-9bfc-4ed8-ad60-a8506ee686b9
+     * User 10001: http://localhost:8181/server-api/rest/wishlist/10001/38e62106-0910-4f94-b418-bfe646d11bc0
+     *
+     * @param userID a valid userID.
+     * @param token  a valid token for user.
+     * @return
+     */
+    WS getWishlist(Long userID, String token);
 
-    WSWishlist removeWishlistItem(Long ID, String token);
+    WS removeWishlistItem(Long ID, String token);
 
 
 }

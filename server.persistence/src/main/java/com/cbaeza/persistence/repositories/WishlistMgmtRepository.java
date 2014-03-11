@@ -15,4 +15,7 @@ public interface WishlistMgmtRepository extends CrudRepository<Wishlist, Long> {
 
     @Query("SELECT u FROM Wishlist u WHERE u.userid = ?1")
     List<Wishlist> findWishlistByUser(Long userid);
+
+    @Query("SELECT u FROM Wishlist u WHERE u.userid = ?1 AND u.id = ?2")
+    Wishlist findWishlistItemByUser(Long userid, Long item);
 }

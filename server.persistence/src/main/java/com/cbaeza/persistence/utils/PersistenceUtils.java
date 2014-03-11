@@ -82,7 +82,7 @@ public class PersistenceUtils {
 
         final WSWishlists result = new WSWishlists();
         for (Wishlist wl : list) {
-            result.getList().add(new WSWishlist(wl.getId().toString(), wl.getUserid().toString(), wl.getProductid(), wl.getProducttype(), wl.getCreationdate()));
+            result.getList().add(new WSWishlist(wl.getId(), wl.getUserid(), wl.getProductid(), wl.getProducttype(), wl.getCreationdate()));
         }
         return result;
     }

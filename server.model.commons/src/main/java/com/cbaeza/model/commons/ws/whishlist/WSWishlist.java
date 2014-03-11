@@ -10,13 +10,13 @@ import java.util.Date;
  */
 public class WSWishlist implements WS {
 
-    private String ID;
-    private String userID;
+    private Long ID;
+    private Long userID;
     private String productID;
     private String productType;
     private Date creationDate;
 
-    public WSWishlist(String ID, String userID, String productID, String productType, Date creationDate) {
+    public WSWishlist(Long ID, Long userID, String productID, String productType, Date creationDate) {
         this.ID = ID;
         this.userID = userID;
         this.productID = productID;
@@ -24,19 +24,19 @@ public class WSWishlist implements WS {
         this.creationDate = creationDate;
     }
 
-    public String getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
