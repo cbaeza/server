@@ -87,4 +87,18 @@ public class PersistenceUtils {
         return result;
     }
 
+    /**
+     * Wrapper
+     *
+     * @param list
+     * @return
+     */
+    public static WSWishlist transformSingleWishListToWSWishlist(Wishlist list) {
+        if (list == null)
+            return new WSWishlist();
+
+        final WSWishlist result = new WSWishlist();
+        return new WSWishlist(list.getId(), list.getUserid(), list.getProductid(), list.getProducttype(), list.getCreationdate());
+    }
+
 }

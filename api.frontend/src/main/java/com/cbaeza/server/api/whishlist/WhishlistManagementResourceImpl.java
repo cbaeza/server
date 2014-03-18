@@ -5,10 +5,7 @@ import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
 import com.cbaeza.persistence.management.whishlist.WhishlistMgmtImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * User: cbaeza
@@ -21,9 +18,11 @@ public class WhishlistManagementResourceImpl implements WhishlistManagementResou
     @Autowired
     private WhishlistMgmtImpl whishlistMgmt;
 
+    @RequestMapping(value = "/save/{userID}/{token}", method = RequestMethod.POST, headers = "Accept=application/json,application/xml")
+    @ResponseBody
     @Override
-    public void saveWhishlistItem(WSWishlist wsWishlist, String token) {
-
+    public WS saveWhishlistItem(@RequestBody WSWishlist wsWishlist, @PathVariable("userID") Long userID, @PathVariable("token") String token) {
+        return whishlistMgmt.addItemToWishlist(wsWishlist, userID, token);
     }
 
     @RequestMapping(value = "/{userid}/{item}/{token}", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")

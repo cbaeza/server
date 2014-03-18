@@ -1,7 +1,6 @@
 package com.cbaeza.persistence.management.whishlist;
 
 import com.cbaeza.model.commons.ws.WS;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlists;
 import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
 
 /**
@@ -10,9 +9,9 @@ import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
  */
 public interface WhishlistMgmt {
 
-    void addItemToWishlist(WSWishlist wsWishlist);
+    WS addItemToWishlist(WSWishlist wsWishlist, Long userID, String token);
 
-    void removeItemFromWishlist(WSWishlist wsWishlist);
+    void removeItemFromWishlist(WSWishlist wsWishlist, Long userID, String token);
 
     WS getWishlist(Long userID, String token);
 

@@ -11,6 +11,7 @@ import com.cbaeza.persistence.utils.PersistenceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,18 +28,34 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
 
 
     @Override
-    public void addItemToWishlist(WSWishlist wsWishlist) {
+    public WS addItemToWishlist(WSWishlist wsWishlist, Long userID, String token) {
+        final boolean valid = checkValidTokenByUser(token, userID);
+        if (valid) {
+            Wishlist wishlist = new Wishlist();
+            wishlist.setUserid(userID);
+            wishlist.setCreationdate(new Date());
+            wishlist.setProductid(wsWishlist.getProductID());
+            wishlist.setProducttype(wsWishlist.getProductType());
 
+            final Wishlist save = wishlistMgmtRepository.save(wishlist);
+            return PersistenceUtils.transformSingleWishListToWSWishlist(save);
+        } else{
+            return new WSError(Error.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Override
-    public void removeItemFromWishlist(WSWishlist wsWishlist) {
+    public void removeItemFromWishlist(WSWishlist wsWishlist, Long userID, String token) {
+        final boolean valid = checkValidTokenByUser(token, userID);
 
+        if (valid) {
+
+        }
     }
 
     @Override
     public WS getWishlist(Long userID, String token) {
-        final boolean valid = sessionTokenMgmt.checkValidTokenByUser(token, userID);
+        final boolean valid = checkValidTokenByUser(token, userID);
 
         if (valid) {
             final List<Wishlist> wishlistByUser = wishlistMgmtRepository.findWishlistByUser(userID);
@@ -50,7 +67,7 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
 
     @Override
     public WS getWishlistItem(Long userID, Long item, String token) {
-        final boolean valid = sessionTokenMgmt.checkValidTokenByUser(token, userID);
+        final boolean valid = checkValidTokenByUser(token, userID);
 
         if (valid) {
             final Wishlist wishlistItem = wishlistMgmtRepository.findWishlistItemByUser(userID, item);
@@ -61,6 +78,10 @@ public class WhishlistMgmtImpl implements WhishlistMgmt {
         } else {
             return new WSError(Error.NOT_AUTHORIZED);
         }
+    }
+
+    private boolean checkValidTokenByUser(String token, Long userID) {
+        return sessionTokenMgmt.checkValidTokenByUser(token, userID);
     }
 
 

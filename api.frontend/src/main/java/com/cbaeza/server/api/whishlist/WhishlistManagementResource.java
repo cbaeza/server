@@ -9,7 +9,7 @@ import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
  */
 public interface WhishlistManagementResource {
 
-    void saveWhishlistItem(WSWishlist wsWishlist, String token);
+    WS saveWhishlistItem(WSWishlist wsWishlist, Long userID, String token);
 
     /**
      * Example </br>

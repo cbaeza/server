@@ -16,6 +16,9 @@ public class WSWishlist implements WS {
     private String productType;
     private Date creationDate;
 
+    public WSWishlist() {
+    }
+
     public WSWishlist(Long ID, Long userID, String productID, String productType, Date creationDate) {
         this.ID = ID;
         this.userID = userID;
