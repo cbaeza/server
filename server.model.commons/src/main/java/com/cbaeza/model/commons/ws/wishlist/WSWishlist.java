@@ -1,4 +1,4 @@
-package com.cbaeza.model.commons.ws.whishlist;
+package com.cbaeza.model.commons.ws.wishlist;
 
 import com.cbaeza.model.commons.ws.WS;
 

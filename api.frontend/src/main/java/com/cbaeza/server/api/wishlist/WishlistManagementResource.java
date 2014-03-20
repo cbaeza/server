@@ -1,15 +1,15 @@
-package com.cbaeza.server.api.whishlist;
+package com.cbaeza.server.api.wishlist;
 
 import com.cbaeza.model.commons.ws.WS;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
+import com.cbaeza.model.commons.ws.wishlist.WSWishlist;
 
 /**
  * User: cbaeza
  * Since: 11.02.14
  */
-public interface WhishlistManagementResource {
+public interface WishlistManagementResource {
 
-    WS saveWhishlistItem(WSWishlist wsWishlist, Long userID, String token);
+    WS saveWishlistItem(WSWishlist wsWishlist, Long userID, String token);
 
     /**
      * Example </br>

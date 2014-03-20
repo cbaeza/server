@@ -1,9 +1,9 @@
-package com.cbaeza.persistence.management.whishlist;
+package com.cbaeza.persistence.management.wishlist;
 
 import com.cbaeza.model.commons.ws.WS;
 import com.cbaeza.model.commons.ws.errors.Error;
 import com.cbaeza.model.commons.ws.errors.WSError;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
+import com.cbaeza.model.commons.ws.wishlist.WSWishlist;
 import com.cbaeza.persistence.domain.Wishlist;
 import com.cbaeza.persistence.management.session.SessionTokenMgmtImpl;
 import com.cbaeza.persistence.repositories.WishlistMgmtRepository;
@@ -19,7 +19,7 @@ import java.util.List;
  * Since: 11.02.14
  */
 @Component
-public class WhishlistMgmtImpl implements WhishlistMgmt {
+public class WishlistMgmtImpl implements WishlistMgmt {
 
     @Autowired
     private WishlistMgmtRepository wishlistMgmtRepository;

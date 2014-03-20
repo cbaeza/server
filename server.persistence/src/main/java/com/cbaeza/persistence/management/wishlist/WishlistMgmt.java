@@ -1,13 +1,13 @@
-package com.cbaeza.persistence.management.whishlist;
+package com.cbaeza.persistence.management.wishlist;
 
 import com.cbaeza.model.commons.ws.WS;
-import com.cbaeza.model.commons.ws.whishlist.WSWishlist;
+import com.cbaeza.model.commons.ws.wishlist.WSWishlist;
 
 /**
  * User: cbaeza
  * Since: 11.02.14
  */
-public interface WhishlistMgmt {
+public interface WishlistMgmt {
 
     WS addItemToWishlist(WSWishlist wsWishlist, Long userID, String token);
 
